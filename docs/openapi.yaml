@@ -5,7 +5,7 @@ info:
 servers:
   - url: http://localhost:3000
     description: Development server
-  - url : https://task-api-8hp9.onrender.com
+  - url: https://task-api-8hp9.onrender.com
     description: Production server on render
 tags:
   - name: Tasks
@@ -13,3 +13,5 @@ tags:
 paths:
   /tasks:
     $ref: paths/tasks.yaml
+  /tasks/{id}:
+    $ref: paths/task-by-id.yaml
