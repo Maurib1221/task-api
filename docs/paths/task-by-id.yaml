@@ -17,13 +17,13 @@ get:
         application/json:
           schema:
             $ref: ../components/schemas/Task.yaml
-    '404':
+    '400':
       description: Validation error - Invalid ID format
       content:
         application/json:
           schema:
             $ref: ../components/schemas/ValidationError.yaml
-    '400':
+    '404':
       description: Task not found
       content:
         application/json:

@@ -33,9 +33,11 @@ export const validateId = [
     .custom(async (value) => {
       const task = await taskService.getTaskById(value);
       if (!task) {
-        throw new Error(`Task with ID ${value} does not exist`);
+        const error = new Error(`Task with ID ${value} does not exist`);
+        error.status = 404;
+        throw error;
       }
       return true;
-    }),
+      }),
   checkValidationResults,
 ];
