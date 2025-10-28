@@ -1,5 +1,6 @@
-import { body } from 'express-validator';
+import { body, param } from 'express-validator';
 import { checkValidationResults } from './handleValidationErrors.js';
+import * as taskService from '../services/taskService.js';
 
 export const validateTask = [
   body('title')
@@ -16,5 +17,25 @@ export const validateTask = [
     .isBoolean()
     .withMessage('completed must be true or false'),
 
+
+
+  checkValidationResults,
+];
+
+export const validateId = [
+  param('id')
+    .exists()
+    .withMessage('ID parameter is required')
+    .bail()
+    .isInt({ gt: 0 })
+    .withMessage('ID must be a positive integer')
+    .bail()
+    .custom(async (value) => {
+      const task = await taskService.getTaskById(value);
+      if (!task) {
+        throw new Error(`Task with ID ${value} does not exist`);
+      }
+      return true;
+    }),
   checkValidationResults,
 ];
