@@ -44,8 +44,4 @@ post:
           schema:
             $ref: ../components/schemas/Task.yaml
     '400':
-      description: Invalid input
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/ValidationError.yaml
+      $ref: ../components/responses/BadRequest.yaml
