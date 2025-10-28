@@ -1,0 +1,11 @@
+type: object
+properties:
+  id:
+    readOnly: true
+    type: integer
+  title:
+    type: string
+    example: Buy groceries
+  completed:
+    type: boolean
+    example: false
